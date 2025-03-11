@@ -10,18 +10,22 @@ To perform regular differncing,seasonal adjustment and log transformatio on inte
 4. Plot the data according to need, before and after regular differncing,seasonal adjustment,log transformation.
 5. Display the overall results.
 ### PROGRAM:
+```
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-
+```
+```
 data=pd.read_csv("C:/Users/SEC/Downloads/archive/data_date.csv")
-
+```
+```
 x=data['Date']
 y=data['AQI Value']
 plt.xlabel('Date')
 plt.ylabel('AQI Value')
 plt.plot(x,y)
-
+```
+```
 data3=data
 data3['diff']=data3['AQI Value'].diff()
 data3=data3.dropna()
@@ -30,7 +34,8 @@ y=data3['AQI Value']
 plt.xlabel('Date')
 plt.ylabel('AQI Value')
 plt.plot(x,y)
-
+```
+```
 data1=data
 data1['SeasonalAdjustment'] = data1['AQI Value'].rolling(window=12).mean()
 data1['SeasonalAdjustment'].dropna()
@@ -39,7 +44,8 @@ y=data1["SeasonalAdjustment"]
 plt.xlabel('Date')
 plt.ylabel('AQI Value')
 plt.plot(x,y)
-
+```
+```
 data2=data
 data2['log']=np.log(data2['diff']).dropna()
 data2=data2.dropna()
@@ -49,7 +55,7 @@ plt.xlabel('Date')
 plt.ylabel('AQI Value')
 # plt.figure(figsize=(8, 6))
 plt.plot(x,y)
-
+```
 
 ### OUTPUT:
 
